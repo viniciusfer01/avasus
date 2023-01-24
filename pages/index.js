@@ -1,6 +1,6 @@
 import Parceiros from "@/components/Parceiros";
 import SimpleSlider from "@/components/SimpleSlider";
-import { Center } from "@chakra-ui/react";
+import { Center, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 import ModulosEducacionais from "../components/ModulosEducacionais";
 
@@ -18,10 +18,12 @@ export default function Home() {
       </Head>
       <main>
         <SimpleSlider />
-        <Center>
-          <ModulosEducacionais />
-          <Parceiros />
+
+        <Center paddingTop={"2rem"} paddingBottom={"1rem"}>
+          <Heading>Modulos Educacionais</Heading>
         </Center>
+        <ModulosEducacionais />
+        <Parceiros />
       </main>
     </>
   );

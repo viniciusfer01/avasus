@@ -1,9 +1,15 @@
+import { AspectRatio, Box } from "@chakra-ui/react";
+import Image from "next/image";
 import React, { Component } from "react";
 import Slider from "react-slick";
+import Image1 from "../public/slide1.jpg";
+import Image2 from "../public/slide8.png";
+import styles from "./SimpleSlider.module.css";
 
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
+      autoplay: true,
       dots: true,
       infinite: true,
       speed: 500,
@@ -11,25 +17,13 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1,
     };
     return (
-      <div>
+      <div className={styles.slider}>
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
+          <div className={styles.slidee}>
+            <Image src={Image1} alt="Avasus | Conhecimento aberto em saúde" />
           </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
+          <div className={styles.slidee}>
+            <Image src={Image2} alt="Avasus | Conhecimento aberto em saúde" />
           </div>
         </Slider>
       </div>

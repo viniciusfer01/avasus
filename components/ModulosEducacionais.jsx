@@ -1,14 +1,7 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  Heading,
-  Image,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Modulo from "./Modulo";
 
 const DUMMY_MODULOS = [
   {
@@ -185,50 +178,41 @@ const ModulosEducacionais = () => {
   const [modulos, setModulos] = useState([]);
   const [isLoading, setIsLoading] = useState([false]);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   axios({
-  //     method: "get",
-  //     url: "http://localhost:3004/cursos",
-  //   })
-  //     .then(function (response) {
-  //       setModulos(response);
-  //     })
-  //     .then(setIsLoading(false));
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get("http://localhost:3004/cursos?_page=3&_limit=3")
+      .then((response) => {
+        setModulos([...response.data]);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
-      <h2>Modulos Educacionais</h2>
+      <Flex>
+        {
+          //trocar para botão!
+        }
+        <Text padding={"1rem"}>Mais populares</Text>
+        <Text padding={"1rem"}>Mais bem avaliados</Text>
+        <Text padding={"1rem"}>Mais recentes</Text>
+      </Flex>
       <ul>
-        {DUMMY_MODULOS.map((modulo) => {
+        {modulos.map((modulo) => {
           return (
-            <Card
-              direction={{ base: "column", sm: "row" }}
-              overflow="hidden"
-              variant="outline"
+            <Modulo
               key={modulo.id}
-            >
-              <Image
-                objectFit="cover"
-                maxW={{ base: "100%", sm: "200px" }}
-                src={modulo.capa}
-                alt={modulo.titulo}
-              />
-
-              <Stack>
-                <CardBody>
-                  <Text>{modulo.titulo}</Text>
-                  <Text>{modulo.matriculados}</Text>
-                  <Text>{modulo.duracao}</Text>
-                  <Text>{modulo.avaliacao}</Text>
-
-                  <Button variant="solid" colorScheme="blue">
-                    Ver Módulo
-                  </Button>
-                </CardBody>
-              </Stack>
-            </Card>
+              id={modulo.id}
+              capa={modulo.capa}
+              titulo={modulo.titulo}
+              matriculados={modulo.matriculados}
+              duracao={modulo.duracao}
+              avaliacao={modulo.avaliacao}
+            />
           );
         })}
         <Button variant="solid" colorScheme="blue">
