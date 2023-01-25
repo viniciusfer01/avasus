@@ -22,7 +22,7 @@ export default function Home() {
           <Heading>Modulos Educacionais</Heading>
         </Center>
         <Container maxW="60rem">
-          <ModulosEducacionais filter="POPULAR" />
+          <ModulosEducacionais />
         </Container>
         <Parceiros />
       </main>

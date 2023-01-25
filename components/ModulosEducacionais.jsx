@@ -185,14 +185,18 @@ const DUMMY_MODULOS = [
   },
 ];
 
+const FilterStates = {
+  POPULAR: "POPULAR",
+  RATING: "RATING",
+  RECENT: "RECENT",
+};
+
 const ModulosEducacionais = (props) => {
   const [modulos, setModulos] = useState([]);
-  const [isLoading, setIsLoading] = useState([false]);
-  const filter = props.filter;
+  const [filter, setFilter] = useState(FilterStates.RATING);
 
   useEffect(() => {
-    setIsLoading(true);
-    if (filter === "POPULAR") {
+    if (filter === FilterStates.POPULAR) {
       axios
         .get(
           "http://localhost:3004/cursos?_sort=matriculados&_order=desc&_page=3&_limit=3"
@@ -205,7 +209,7 @@ const ModulosEducacionais = (props) => {
           console.log(error);
         });
     }
-    if (filter === "RATING") {
+    if (filter === FilterStates.RATING) {
       axios
         .get(
           "http://localhost:3004/cursos?_sort=avaliacao&_order=desc&_page=3&_limit=3"
@@ -218,7 +222,7 @@ const ModulosEducacionais = (props) => {
           console.log(error);
         });
     }
-    if (filter === "RECENT") {
+    if (filter === FilterStates.RECENT) {
       axios
         .get(
           "http://localhost:3004/cursos?_sort=criado_em&_order=desc&_page=3&_limit=3"
@@ -231,59 +235,48 @@ const ModulosEducacionais = (props) => {
           console.log(error);
         });
     }
-  }, []);
+  }, [filter]);
+
+  const handleFilterPopular = (filter) => {
+    setFilter(FilterStates.POPULAR);
+  };
+
+  const handleFilterRating = (filter) => {
+    setFilter(FilterStates.RATING);
+  };
+
+  const handleFilterRecent = (filter) => {
+    setFilter(FilterStates.RECENT);
+  };
 
   return (
     <>
-      <Tabs>
-        <TabList>
-          <Tab>
-            <Link href="/">Mais populares</Link>
-          </Tab>
-          <Tab>
-            <Link href="/most_rated">Mais bem avaliados</Link>
-          </Tab>
-          <Tab>
-            <Link href="/most_recent">Mais recentes</Link>
-          </Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <ul>
-              {modulos.map((modulo) => {
-                return (
-                  <Container
-                    maxW="60rem"
-                    bg="gray.100"
-                    borderRadius={"5px"}
-                    padding={"1rem"}
-                    margin={"1rem"}
-                    key={modulo.id}
-                  >
-                    <Modulo
-                      id={modulo.id}
-                      capa={modulo.capa}
-                      titulo={modulo.titulo}
-                      matriculados={modulo.matriculados}
-                      duracao={modulo.duracao}
-                      avaliacao={modulo.avaliacao}
-                    />
-                  </Container>
-                );
-              })}
-              <Button variant="solid" colorScheme="blue">
-                Ver Mais
-              </Button>
-            </ul>
-          </TabPanel>
-          <TabPanel>
-            <Text padding={"1rem"}></Text>
-          </TabPanel>
-          <TabPanel>
-            <Text padding={"1rem"}></Text>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+      <ul>
+        {modulos.map((modulo) => {
+          return (
+            <Container
+              maxW="60rem"
+              bg="gray.100"
+              borderRadius={"5px"}
+              padding={"1rem"}
+              margin={"1rem"}
+              key={modulo.id}
+            >
+              <Modulo
+                id={modulo.id}
+                capa={modulo.capa}
+                titulo={modulo.titulo}
+                matriculados={modulo.matriculados}
+                duracao={modulo.duracao}
+                avaliacao={modulo.avaliacao}
+              />
+            </Container>
+          );
+        })}
+        <Button variant="solid" colorScheme="blue">
+          Ver Mais
+        </Button>
+      </ul>
     </>
   );
 };
