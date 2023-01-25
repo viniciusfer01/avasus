@@ -6,7 +6,6 @@ const Modulo = (props) => {
       direction={{ base: "column", sm: "row" }}
       overflow="hidden"
       variant="outline"
-      marginBottom={"1rem"}
     >
       <Image
         objectFit="cover"

@@ -1,5 +1,16 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  Flex,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 import axios from "axios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Modulo from "./Modulo";
 
@@ -174,51 +185,105 @@ const DUMMY_MODULOS = [
   },
 ];
 
-const ModulosEducacionais = () => {
+const ModulosEducacionais = (props) => {
   const [modulos, setModulos] = useState([]);
   const [isLoading, setIsLoading] = useState([false]);
+  const filter = props.filter;
 
   useEffect(() => {
     setIsLoading(true);
-    axios
-      .get("http://localhost:3004/cursos?_page=3&_limit=3")
-      .then((response) => {
-        setModulos([...response.data]);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (filter === "POPULAR") {
+      axios
+        .get(
+          "http://localhost:3004/cursos?_sort=matriculados&_order=desc&_page=3&_limit=3"
+        )
+        .then((response) => {
+          setModulos([...response.data]);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    if (filter === "RATING") {
+      axios
+        .get(
+          "http://localhost:3004/cursos?_sort=avaliacao&_order=desc&_page=3&_limit=3"
+        )
+        .then((response) => {
+          setModulos([...response.data]);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    if (filter === "RECENT") {
+      axios
+        .get(
+          "http://localhost:3004/cursos?_sort=criado_em&_order=desc&_page=3&_limit=3"
+        )
+        .then((response) => {
+          setModulos([...response.data]);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   return (
     <>
-      <Flex>
-        {
-          //trocar para botão!
-        }
-        <Text padding={"1rem"}>Mais populares</Text>
-        <Text padding={"1rem"}>Mais bem avaliados</Text>
-        <Text padding={"1rem"}>Mais recentes</Text>
-      </Flex>
-      <ul>
-        {modulos.map((modulo) => {
-          return (
-            <Modulo
-              key={modulo.id}
-              id={modulo.id}
-              capa={modulo.capa}
-              titulo={modulo.titulo}
-              matriculados={modulo.matriculados}
-              duracao={modulo.duracao}
-              avaliacao={modulo.avaliacao}
-            />
-          );
-        })}
-        <Button variant="solid" colorScheme="blue">
-          Ver Mais
-        </Button>
-      </ul>
+      <Tabs>
+        <TabList>
+          <Tab>
+            <Link href="/">Mais populares</Link>
+          </Tab>
+          <Tab>
+            <Link href="/most_rated">Mais bem avaliados</Link>
+          </Tab>
+          <Tab>
+            <Link href="/most_recent">Mais recentes</Link>
+          </Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ul>
+              {modulos.map((modulo) => {
+                return (
+                  <Container
+                    maxW="60rem"
+                    bg="gray.100"
+                    borderRadius={"5px"}
+                    padding={"1rem"}
+                    margin={"1rem"}
+                    key={modulo.id}
+                  >
+                    <Modulo
+                      id={modulo.id}
+                      capa={modulo.capa}
+                      titulo={modulo.titulo}
+                      matriculados={modulo.matriculados}
+                      duracao={modulo.duracao}
+                      avaliacao={modulo.avaliacao}
+                    />
+                  </Container>
+                );
+              })}
+              <Button variant="solid" colorScheme="blue">
+                Ver Mais
+              </Button>
+            </ul>
+          </TabPanel>
+          <TabPanel>
+            <Text padding={"1rem"}></Text>
+          </TabPanel>
+          <TabPanel>
+            <Text padding={"1rem"}></Text>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </>
   );
 };
