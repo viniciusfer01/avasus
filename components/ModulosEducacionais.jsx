@@ -2,6 +2,7 @@ import {
   Button,
   Container,
   Flex,
+  Spinner,
   Tab,
   TabList,
   TabPanel,
@@ -194,8 +195,10 @@ const FilterStates = {
 const ModulosEducacionais = (props) => {
   const [modulos, setModulos] = useState([]);
   const [filter, setFilter] = useState(FilterStates.RATING);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     if (filter === FilterStates.POPULAR) {
       axios
         .get(
@@ -203,10 +206,10 @@ const ModulosEducacionais = (props) => {
         )
         .then((response) => {
           setModulos([...response.data]);
-          console.log(response.data);
+          setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error);
+          setIsLoading(false);
         });
     }
     if (filter === FilterStates.RATING) {
@@ -216,10 +219,10 @@ const ModulosEducacionais = (props) => {
         )
         .then((response) => {
           setModulos([...response.data]);
-          console.log(response.data);
+          setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error);
+          setIsLoading(false);
         });
     }
     if (filter === FilterStates.RECENT) {
@@ -229,10 +232,10 @@ const ModulosEducacionais = (props) => {
         )
         .then((response) => {
           setModulos([...response.data]);
-          console.log(response.data);
+          setIsLoading(false);
         })
         .catch((error) => {
-          console.log(error);
+          setIsLoading(false);
         });
     }
   }, [filter]);
@@ -251,32 +254,66 @@ const ModulosEducacionais = (props) => {
 
   return (
     <>
-      <ul>
-        {modulos.map((modulo) => {
-          return (
-            <Container
-              maxW="60rem"
-              bg="gray.100"
-              borderRadius={"5px"}
-              padding={"1rem"}
-              margin={"1rem"}
-              key={modulo.id}
-            >
-              <Modulo
-                id={modulo.id}
-                capa={modulo.capa}
-                titulo={modulo.titulo}
-                matriculados={modulo.matriculados}
-                duracao={modulo.duracao}
-                avaliacao={modulo.avaliacao}
-              />
-            </Container>
-          );
-        })}
-        <Button variant="solid" colorScheme="blue">
-          Ver Mais
+      <Flex>
+        <Button
+          margin={".5rem"}
+          backgroundColor={"white"}
+          onClick={handleFilterPopular}
+        >
+          Mais populares
         </Button>
-      </ul>
+        <Button
+          margin={".5rem"}
+          backgroundColor={"white"}
+          onClick={handleFilterRating}
+        >
+          Mais bem avaliados
+        </Button>
+        <Button
+          margin={".5rem"}
+          backgroundColor={"white"}
+          onClick={handleFilterRecent}
+        >
+          Mais recentes
+        </Button>
+      </Flex>
+      {isLoading && (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      )}
+      {!isLoading && (
+        <ul>
+          {modulos.map((modulo) => {
+            return (
+              <Container
+                maxW="60rem"
+                bg="gray.100"
+                borderRadius={"5px"}
+                padding={"1rem"}
+                margin={"1rem"}
+                key={modulo.id}
+              >
+                <Modulo
+                  id={modulo.id}
+                  capa={modulo.capa}
+                  titulo={modulo.titulo}
+                  matriculados={modulo.matriculados}
+                  duracao={modulo.duracao}
+                  avaliacao={modulo.avaliacao}
+                />
+              </Container>
+            );
+          })}
+          <Button variant="solid" colorScheme="blue">
+            Ver Mais
+          </Button>
+        </ul>
+      )}
     </>
   );
 };

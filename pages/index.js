@@ -18,7 +18,7 @@ export default function Home() {
       </Head>
       <main>
         <SimpleSlider />
-        <Center paddingTop={"2rem"} paddingBottom={"1rem"}>
+        <Center paddingTop={"5rem"} paddingBottom={"1rem"}>
           <Heading>Modulos Educacionais</Heading>
         </Center>
         <Container maxW="60rem">
