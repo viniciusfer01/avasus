@@ -1,13 +1,9 @@
+import ModulosEducacionaisGrid from "@/components/ModulosEducacionaisGrid";
 import {
-  Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  Button,
-  Center,
   Container,
-  Flex,
-  Heading,
 } from "@chakra-ui/react";
 import Head from "next/head";
 
@@ -41,60 +37,7 @@ export default function ModulosEducacionais() {
               </BreadcrumbItem>
             </Breadcrumb>
           </nav>
-          <Heading paddingTop={"2rem"} paddingBottom={"2rem"}>
-            Módulos Educacionais
-          </Heading>
-          <Flex>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Covid 19
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Sífilis e outras Ist’s
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              OPAS
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Doenças raras
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Web Palestras
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Sistemas prisional
-            </Button>
-            <Button
-              margin={".5rem"}
-              backgroundColor={"white"}
-              onClick={console.log("fui clicado!")}
-            >
-              Preceptoria
-            </Button>
-          </Flex>
+          <ModulosEducacionaisGrid />
         </Container>
       </main>
     </>
