@@ -5,7 +5,13 @@ import { Flex, Input, Link, Button } from "@chakra-ui/react";
 const Header = () => {
   return (
     <nav>
-      <Flex justify={"center"}>
+      <Flex
+        justify={"center"}
+        position="fixed"
+        zIndex={200}
+        backgroundColor={"white"}
+        width={"100%"}
+      >
         <Link href="#" padding={".8rem 3rem"}>
           <Image src={logo} alt="AVASUS" />
         </Link>

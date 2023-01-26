@@ -1,6 +1,6 @@
 import Parceiros from "@/components/Parceiros";
 import SimpleSlider from "@/components/SimpleSlider";
-import { Center, Container, Heading } from "@chakra-ui/react";
+import { Box, Center, Container, Heading } from "@chakra-ui/react";
 import Head from "next/head";
 import ModulosEducacionais from "../components/ModulosEducacionais";
 

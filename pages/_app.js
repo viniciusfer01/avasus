@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import "@/styles/globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -19,8 +19,10 @@ export default function App({ Component, pageProps }) {
       />
       <ChakraProvider>
         <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <Box paddingTop={"4rem"}>
+          <Component {...pageProps} />
+          <Footer />
+        </Box>
       </ChakraProvider>
     </>
   );
