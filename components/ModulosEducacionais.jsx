@@ -312,7 +312,7 @@ const ModulosEducacionais = (props) => {
           })}
           <Center>
             <Button variant="solid" colorScheme="blue">
-              Ver Mais
+              <Link href="/modulos-educacionais">Ver Mais</Link>
             </Button>
           </Center>
         </ul>

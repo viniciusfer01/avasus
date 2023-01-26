@@ -9,8 +9,9 @@ const Header = () => {
         justify={"center"}
         position="fixed"
         zIndex={200}
-        backgroundColor={"white"}
+        backgroundColor={"#FFF"}
         width={"100%"}
+        boxShadow={"0 0 10px rgba(0,0,0,0.5)"}
       >
         <Link href="#" padding={".8rem 3rem"}>
           <Image src={logo} alt="AVASUS" />
