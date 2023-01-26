@@ -1,5 +1,6 @@
 import {
   Button,
+  Center,
   Container,
   Flex,
   Spinner,
@@ -293,7 +294,7 @@ const ModulosEducacionais = (props) => {
               <Container
                 maxW="60rem"
                 bg="gray.100"
-                borderRadius={"5px"}
+                borderRadius={"2rem"}
                 padding={"1rem"}
                 margin={"1rem"}
                 key={modulo.id}
@@ -309,9 +310,11 @@ const ModulosEducacionais = (props) => {
               </Container>
             );
           })}
-          <Button variant="solid" colorScheme="blue">
-            Ver Mais
-          </Button>
+          <Center>
+            <Button variant="solid" colorScheme="blue">
+              Ver Mais
+            </Button>
+          </Center>
         </ul>
       )}
     </>

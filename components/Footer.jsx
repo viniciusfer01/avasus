@@ -1,36 +1,67 @@
-import { Center, Flex } from "@chakra-ui/react";
+import { Center, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 const Footer = () => {
   return (
     <>
-      <h2>Realização</h2>
-      <Flex justify={"center"}>
-        <p>LAIS</p>
-        <p>UFRN</p>
+      <Container
+        minWidth={"100%"}
+        backgroundColor={"red.500"}
+        textAlign={"Center"}
+      >
+        <Text color={"whitesmoke"} fontSize={"1.5rem"}>
+          Realização
+        </Text>
+        <Center>
+          <Text color={"whitesmoke"} fontSize={"1.5rem"} padding={".5rem 2rem"}>
+            LAIS
+          </Text>
+          <Text color={"whitesmoke"} fontSize={"1.5rem"} padding={".5rem 2rem"}>
+            UFRN
+          </Text>
+        </Center>
+      </Container>
+      <Flex
+        alignItems={"flex-start"}
+        justifyContent={"center"}
+        backgroundColor={"#323237"}
+        textColor={"whitesmoke"}
+      >
+        <Container>
+          <Heading>Lais</Heading>
+          <Text>Laboratório de Inovação Tecnológica em Saúde.</Text>
+        </Container>
+        <Container>
+          <Heading>Links Úteis</Heading>
+          <Text>Laboratório de Inovação Tecnológica em Saúde.</Text>
+          <Text>
+            <Link href="/">Início</Link>
+          </Text>
+          <Text>
+            <Link href="#">Sobre nós</Link>
+          </Text>
+          <Text>
+            <Link href="#">Módulos</Link>
+          </Text>
+          <Text>
+            <Link href="#">Parceiros</Link>
+          </Text>
+          <Text>
+            <Link href="#">Transparência</Link>
+          </Text>
+        </Container>
+        <Container>
+          <Heading>Redes Sociais</Heading>
+          <Link href="#">Facebook</Link>
+          <Link href="#">Twitter</Link>
+          <Link href="#">Instagram</Link>
+        </Container>
       </Flex>
-      <Flex justify={"center"}>
-        <div>
-          <p>Lais</p>
-          <p>Laboratório de Inovação Tecnológica em Saúde.</p>
-        </div>
-        <div>
-          <p>Links Úteis</p>
-          <p>Laboratório de Inovação Tecnológica em Saúde.</p>
-          <Link href="/">Início</Link>
-          <Link href="#">Sobre nós</Link>
-          <Link href="#">Módulos</Link>
-          <Link href="#">Parceiros</Link>
-          <Link href="#">Transparência</Link>
-        </div>
-        <div>
-          <p>Redes Sociais</p>
-          <p>Facebook</p>
-          <p>Twitter</p>
-          <p>Instagram</p>
-        </div>
-        <div>2022 © LAIS (HUOL). Todos os direitos reservados</div>
-      </Flex>
+      <Center backgroundColor={"#424146"} padding={"1.5rem"}>
+        <Text color={"whitesmoke"}>
+          2022 © LAIS (HUOL). Todos os direitos reservados
+        </Text>
+      </Center>
     </>
   );
 };
