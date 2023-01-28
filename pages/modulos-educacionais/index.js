@@ -21,7 +21,11 @@ export default function ModulosEducacionais() {
       </Head>
       <main>
         <Container width={"100%"} backgroundColor={"#F5F5F5"}></Container>
-        <Container maxWidth={"60rem"} textAlign={"center"}>
+        <Container
+          maxWidth={"60rem"}
+          textAlign={"center"}
+          marginBottom={"10rem"}
+        >
           <nav>
             <Breadcrumb padding={"1.5rem 0"}>
               <BreadcrumbItem>

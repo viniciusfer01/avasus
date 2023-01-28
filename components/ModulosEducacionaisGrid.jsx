@@ -17,7 +17,7 @@ function PaginatedItems({ itemsPerPage }) {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:3004/cursos?cateroriacateroria=Acessibilidade&_page=2&_limit=6"
+        "http://localhost:3004/cursos?cateroriacateroria=Acessibilidade&_page=1&_limit=30"
       )
       .then((res) => {
         console.log(res.data);

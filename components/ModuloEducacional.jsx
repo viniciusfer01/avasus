@@ -4,6 +4,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Center,
   Container,
   Divider,
   Flex,
@@ -29,9 +30,11 @@ const ModuloEducacional = (props) => {
               {props.parceiros}
             </Text>
           </Container>
-          <Flex>
-            <Text>{props.matriculados}</Text>
-            <Text>{props.duracao}</Text>
+          <Flex justifyContent={"space-between"}>
+            <Center>
+              <Text paddingRight={"1rem"}>{props.matriculados}</Text>
+              <Text>{props.duracao}</Text>
+            </Center>
             <Text>{props.avaliacao}</Text>
           </Flex>
           <Text noOfLines={[5]} textAlign={"left"}>
