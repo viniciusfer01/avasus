@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Container,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+} from "@chakra-ui/react";
 import ModuloEducacional from "./ModuloEducacional";
 
 // Example items, to simulate fetching from another resources.
@@ -32,13 +40,14 @@ function PaginatedItems({ itemsPerPage }) {
   return (
     <>
       <Items currentItems={currentItems} />
+
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Próximo >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="< Anterior"
         renderOnZeroPageCount={null}
       />
     </>
@@ -47,14 +56,14 @@ function PaginatedItems({ itemsPerPage }) {
 
 function Items({ currentItems }) {
   return (
-    <>
+    <Grid templateColumns="repeat(3, 1fr)" gap={6}>
       {currentItems &&
         currentItems.map((item) => (
-          <div>
-            <h3>Item #{item}</h3>
-          </div>
+          <GridItem w={"100%"}>
+            <ModuloEducacional />
+          </GridItem>
         ))}
-    </>
+    </Grid>
   );
 }
 
@@ -115,8 +124,7 @@ const ModulosEducacionaisGrid = () => {
           Preceptoria
         </Button>
       </Flex>
-      <PaginatedItems itemsPerPage={4} />
-      <ModuloEducacional />
+      <PaginatedItems itemsPerPage={6} />
     </>
   );
 };
