@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { Button, Flex, Grid, GridItem, Heading } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import ModuloEducacional from "./ModuloEducacional";
 import axios from "axios";
 
@@ -23,6 +31,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "covid") {
@@ -31,6 +40,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "sifilis") {
@@ -41,12 +51,14 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "opas") {
       axios.get("http://localhost:3004/cursos?cateroria=OPAS").then((res) => {
         console.log(res.data);
         setItems(res.data);
+        props.resultadosNumber(res.data.length);
       });
     }
     if (props.filter == "doencas") {
@@ -55,6 +67,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "web") {
@@ -63,6 +76,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "sistema") {
@@ -71,6 +85,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
     if (props.filter == "preceptoria") {
@@ -79,6 +94,7 @@ function PaginatedItems(props) {
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
+          props.resultadosNumber(res.data.length);
         });
     }
   }, [props.filter]);
@@ -140,6 +156,7 @@ function Items({ currentItems }) {
 
 const ModulosEducacionaisGrid = () => {
   const [filter, setFilter] = useState("");
+  const [resultados, setResultados] = useState(0);
 
   const handleFilterCovid = () => {
     setFilter("covid");
@@ -161,6 +178,10 @@ const ModulosEducacionaisGrid = () => {
   };
   const handleFilterPreceptoria = () => {
     setFilter("preceptoria");
+  };
+
+  const changeResultadosHandler = (resultados) => {
+    setResultados(resultados);
   };
 
   return (
@@ -219,7 +240,14 @@ const ModulosEducacionaisGrid = () => {
           Preceptoria
         </Button>
       </Flex>
-      <PaginatedItems itemsPerPage={6} filter={filter} />
+      <Text textAlign={"left"} textColor={"gray"}>
+        6 de {resultados} Resultados
+      </Text>
+      <PaginatedItems
+        itemsPerPage={6}
+        filter={filter}
+        resultadosNumber={changeResultadosHandler}
+      />
     </>
   );
 };
