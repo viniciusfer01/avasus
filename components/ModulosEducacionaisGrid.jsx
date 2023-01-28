@@ -7,7 +7,7 @@ import axios from "axios";
 // Example items, to simulate fetching from another resources.
 //const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
-function PaginatedItems({ itemsPerPage }) {
+function PaginatedItems(props) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
@@ -15,27 +15,85 @@ function PaginatedItems({ itemsPerPage }) {
 
   //fetch items from API
   useEffect(() => {
-    axios
-      .get(
-        "http://localhost:3004/cursos?cateroriacateroria=Acessibilidade&_page=1&_limit=30"
-      )
-      .then((res) => {
+    if (props.filter == "") {
+      axios
+        .get(
+          "http://localhost:3004/cursos?cateroria=Acessibilidade&_page=1&_limit=30"
+        )
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "covid") {
+      axios
+        .get("http://localhost:3004/cursos?cateroria=Covid%2019")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "sifilis") {
+      axios
+        .get(
+          "http://localhost:3004/cursos?cateroria=S%C3%ADflis%20e%20outras%20ist"
+        )
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "opas") {
+      axios.get("http://localhost:3004/cursos?cateroria=OPAS").then((res) => {
         console.log(res.data);
         setItems(res.data);
       });
-  }, []);
+    }
+    if (props.filter == "doencas") {
+      axios
+        .get("http://localhost:3004/cursos?cateroria=Doen%C3%A7as%20raras")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "web") {
+      axios
+        .get("http://localhost:3004/cursos?cateroria=WebPalestras")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "sistema") {
+      axios
+        .get("http://localhost:3004/cursos?cateroria=Sistema%20prisional")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+    if (props.filter == "preceptoria") {
+      axios
+        .get("http://localhost:3004/cursos?cateroria=Preceptoria")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        });
+    }
+  }, [props.filter]);
 
   // Simulate fetching items from another resources.
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
-  const endOffset = itemOffset + itemsPerPage;
+  const endOffset = itemOffset + props.itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  const pageCount = Math.ceil(items.length / props.itemsPerPage);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * props.itemsPerPage) % items.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -81,6 +139,30 @@ function Items({ currentItems }) {
 }
 
 const ModulosEducacionaisGrid = () => {
+  const [filter, setFilter] = useState("");
+
+  const handleFilterCovid = () => {
+    setFilter("covid");
+  };
+  const handleFilterSifilis = () => {
+    setFilter("sifilis");
+  };
+  const handleFilterOpas = () => {
+    setFilter("opas");
+  };
+  const handleFilterDoencas = () => {
+    setFilter("doencas");
+  };
+  const handleFilterWeb = () => {
+    setFilter("web");
+  };
+  const handleFilterSistema = () => {
+    setFilter("sistema");
+  };
+  const handleFilterPreceptoria = () => {
+    setFilter("preceptoria");
+  };
+
   return (
     <>
       <Heading paddingTop={"2rem"} paddingBottom={"2rem"}>
@@ -90,54 +172,54 @@ const ModulosEducacionaisGrid = () => {
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterCovid}
         >
           Covid 19
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterSifilis}
         >
           Sífilis e outras Ist’s
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterOpas}
         >
           OPAS
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterDoencas}
         >
           Doenças raras
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterWeb}
         >
           Web Palestras
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterSistema}
         >
           Sistemas prisional
         </Button>
         <Button
           margin={".5rem"}
           backgroundColor={"white"}
-          onClick={console.log("fui clicado!")}
+          onClick={handleFilterPreceptoria}
         >
           Preceptoria
         </Button>
       </Flex>
-      <PaginatedItems itemsPerPage={6} />
+      <PaginatedItems itemsPerPage={6} filter={filter} />
     </>
   );
 };
