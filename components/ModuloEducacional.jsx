@@ -4,32 +4,40 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Container,
   Divider,
+  Flex,
   Heading,
   Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
 
-const ModuloEducacional = () => {
+const ModuloEducacional = (props) => {
   return (
     <Card maxW="sm">
       <CardBody>
-        <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-          alt="Green double couch with wooden legs"
-          borderRadius="lg"
-        />
+        <Image src={props.capa} alt="Capa do módulo" borderRadius="lg" />
+
         <Stack mt="6" spacing="3">
-          <Heading size="md">Living room Sofa</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
+          ]
+          <Container textAlign={"left"} padding={"0"}>
+            <Heading size="md" noOfLines={[2]}>
+              {props.titulo}
+            </Heading>
+            <Text color="gray.500" fontSize=".8rem">
+              {props.parceiros}
+            </Text>
+          </Container>
+          <Flex>
+            <Text>{props.matriculados}</Text>
+            <Text>{props.duracao}</Text>
+            <Text>{props.avaliacao}</Text>
+          </Flex>
+          <Text noOfLines={[5]} textAlign={"left"}>
+            {props.sobre}
           </Text>
-          <Text color="blue.600" fontSize="2xl">
-            $450
-          </Text>
+          <Button>Ver curso</Button>
         </Stack>
       </CardBody>
     </Card>
