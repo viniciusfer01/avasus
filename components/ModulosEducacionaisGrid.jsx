@@ -140,6 +140,7 @@ function Items({ currentItems }) {
         currentItems.map((item) => (
           <GridItem w={"100%"} key={item.id}>
             <ModuloEducacional
+              id={item.id}
               capa={item.capa}
               titulo={item.titulo}
               parceiros={item.parceiros}

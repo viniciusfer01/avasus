@@ -13,6 +13,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 const ModuloEducacional = (props) => {
   return (
@@ -21,7 +22,6 @@ const ModuloEducacional = (props) => {
         <Image src={props.capa} alt="Capa do módulo" borderRadius="lg" />
 
         <Stack mt="6" spacing="3">
-          ]
           <Container textAlign={"left"} padding={"0"}>
             <Heading size="md" noOfLines={[2]}>
               {props.titulo}
@@ -40,7 +40,9 @@ const ModuloEducacional = (props) => {
           <Text noOfLines={[5]} textAlign={"left"}>
             {props.sobre}
           </Text>
-          <Button>Ver curso</Button>
+          <Button>
+            <Link href={`modulos-educacionais/` + props.id}>Ver curso</Link>
+          </Button>
         </Stack>
       </CardBody>
     </Card>
