@@ -1,10 +1,24 @@
-import Parceiros from "@/components/Parceiros";
-import SimpleSlider from "@/components/SimpleSlider";
-import { Box, Center, Container, Heading } from "@chakra-ui/react";
+import React, { useState } from "react";
+import PaginatedItems from "@/components/ParceirosPagination";
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Center,
+  Container,
+  Grid,
+  GridItem,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import Head from "next/head";
-import ModulosEducacionais from "../components/ModulosEducacionais";
 
 export default function Home() {
+  const [resultados, setResultados] = useState(0);
+  const changeResultadosHandler = (resultados) => {
+    setResultados(resultados);
+  };
   return (
     <>
       <Head>
@@ -17,7 +31,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Parceiros</h1>
+        <Container maxWidth={"60rem"} textAlign={"left"}>
+          <Breadcrumb padding={"1.5rem 0"}>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Início</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">Parceiros</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Heading textColor={"#D2202C"} padding={"1rem 0"}>
+            Nossos parceiros
+          </Heading>
+          <Text textAlign={"left"} textColor={"gray"} padding={"1rem 0"}>
+            6 de {resultados} Resultados
+          </Text>
+          <PaginatedItems
+            itemsPerPage={6}
+            resultadosNumber={changeResultadosHandler}
+          />
+        </Container>
       </main>
     </>
   );

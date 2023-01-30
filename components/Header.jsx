@@ -25,7 +25,7 @@ const Header = () => {
         <Link href="#" padding={"1rem"}>
           Cursos
         </Link>
-        <Link href="#" padding={"1rem"}>
+        <Link href="/parceiros" padding={"1rem"}>
           Parceiros
         </Link>
         <Link href="#" padding={"1rem"}>

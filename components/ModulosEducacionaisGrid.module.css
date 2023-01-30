@@ -1,0 +1,49 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.pageClassName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 0.5rem; */
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.breakClassName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.nextClassName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 5px 5px 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.previousClassName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 0 0 5px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  cursor: pointer;
+  background-color: #d2202c;
+  color: white;
+}

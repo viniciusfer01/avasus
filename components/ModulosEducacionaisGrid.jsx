@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import ModuloEducacional from "./ModuloEducacional";
 import axios from "axios";
+import styles from "./ModulosEducacionaisGrid.module.css";
 
 // Example items, to simulate fetching from another resources.
 //const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -128,6 +129,11 @@ function PaginatedItems(props) {
         pageCount={pageCount}
         previousLabel="< Anterior"
         renderOnZeroPageCount={null}
+        containerClassName={styles.pagination}
+        pageClassName={styles.pageClassName}
+        breakClassName={styles.breakClassName}
+        nextClassName={styles.nextClassName}
+        previousClassName={styles.previousClassName}
       />
     </>
   );
