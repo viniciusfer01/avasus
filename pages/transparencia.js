@@ -1,9 +1,12 @@
 import DadosGerais from "@/components/DadosGerais";
+import UsuariosPorCurso from "@/components/UsuariosPorCurso";
+import UsuariosPorEstado from "@/components/UsuariosPorEstado";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   Container,
+  Flex,
   Heading,
 } from "@chakra-ui/react";
 import Head from "next/head";
@@ -39,6 +42,10 @@ export default function Transparencia() {
             Transparência
           </Heading>
           <DadosGerais />
+          <Flex alignContent={"space-between"}>
+            <UsuariosPorCurso />
+            <UsuariosPorEstado />
+          </Flex>
         </Container>
       </main>
     </>

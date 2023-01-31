@@ -1,6 +1,6 @@
 import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 
-const DadosGerais = () => {
+const DadosGerais = (props) => {
   return (
     <Container
       textAlign={"center"}
