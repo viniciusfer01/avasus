@@ -19,7 +19,7 @@ export default function Home() {
       <main>
         <SimpleSlider />
         <Center paddingTop={"5rem"} paddingBottom={"1rem"}>
-          <Heading>Modulos Educacionais</Heading>
+          <Heading textColor={"#D2202C"}>Modulos Educacionais</Heading>
         </Center>
         <Container maxW="60rem">
           <ModulosEducacionais />

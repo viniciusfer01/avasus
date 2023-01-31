@@ -311,7 +311,7 @@ const ModulosEducacionais = (props) => {
             );
           })}
           <Center>
-            <Button variant="solid" colorScheme="blue">
+            <Button variant="solid" bgColor={"#707070"} textColor={"#fff"}>
               <Link href="/modulos-educacionais">Ver Mais</Link>
             </Button>
           </Center>

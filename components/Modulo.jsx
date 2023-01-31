@@ -21,7 +21,11 @@ const Modulo = (props) => {
           <Text>{props.duracao}</Text>
           <Text>{props.avaliacao}</Text>
 
-          <Button variant="solid" colorScheme="blue">
+          <Button
+            variant="solid"
+            backgroundColor={"#707070"}
+            textColor={"#fff"}
+          >
             Ver Módulo
           </Button>
         </CardBody>
