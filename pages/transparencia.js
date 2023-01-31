@@ -1,3 +1,4 @@
+import DadosGerais from "@/components/DadosGerais";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -37,6 +38,7 @@ export default function Transparencia() {
           >
             Transparência
           </Heading>
+          <DadosGerais />
         </Container>
       </main>
     </>
