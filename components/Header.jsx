@@ -22,13 +22,13 @@ const Header = () => {
         <Link href="#" padding={"1rem"}>
           Sobre nós
         </Link>
-        <Link href="#" padding={"1rem"}>
+        <Link href="/modulos-educacionais" padding={"1rem"}>
           Cursos
         </Link>
         <Link href="/parceiros" padding={"1rem"}>
           Parceiros
         </Link>
-        <Link href="#" padding={"1rem"}>
+        <Link href="/transparencia" padding={"1rem"}>
           Transparência
         </Link>
         <Link href="#" padding={"1rem"}>
