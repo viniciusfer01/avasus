@@ -9,10 +9,26 @@ import {
   Flex,
   Heading,
 } from "@chakra-ui/react";
+import axios from "axios";
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const COLORS = ["#FFFFFF", "#D2202C", "#707070", "#2F2E41"];
 
 export default function Transparencia() {
+  const [dadosGerais, setDadosGerais] = useState({});
+  const [usuariosPorCurso, setUsuariosPorCurso] = useState({});
+  const [usuariosPorEstado, setUsuariosPorEstado] = useState({});
+
+  useEffect(() => {
+    axios.get("http://localhost:3004/transparecia").then((response) => {
+      setDadosGerais(response.data.dados_gerais);
+      setUsuariosPorCurso(response.data.usuarios_por_curso);
+      setUsuariosPorEstado(response.data.usuarios_por_estado);
+      console.log(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -41,10 +57,10 @@ export default function Transparencia() {
           >
             Transparência
           </Heading>
-          <DadosGerais />
+          <DadosGerais data={dadosGerais} />
           <Flex alignContent={"space-between"}>
-            <UsuariosPorCurso />
-            <UsuariosPorEstado />
+            <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
+            <UsuariosPorEstado data={usuariosPorEstado} colors={COLORS} />
           </Flex>
         </Container>
       </main>

@@ -15,45 +15,33 @@ const DadosGerais = (props) => {
 
       <Flex>
         <Container>
-          <Text>
-            Total de usuários registrados
-            {/* {transparencia.dados_gerais.usuarios_registrados} */}
-          </Text>
+          <Text>Total de usuários registrados</Text>
+          <Text>{props.data && props.data.usuarios_registrados}</Text>
         </Container>
 
         <Container>
-          <Text>
-            Inscrições realizadas
-            {/* {transparencia.dados_gerais.incricoes_realizadas} */}
-          </Text>
+          <Text>Inscrições realizadas</Text>
+          <Text>{props.data && props.data.incricoes_realizadas}</Text>
         </Container>
 
         <Container>
-          <Text>
-            Cursos ativos
-            {/* {transparencia.dados_gerais.cursos_ativos} */}
-          </Text>
+          <Text>Cursos ativos</Text>
+          <Text>{props.data && props.data.cursos_ativos}</Text>
         </Container>
 
         <Container>
-          <Text>
-            Direito à Certificação
-            {/* {transparencia.dados_gerais.direito_certificacao} */}
-          </Text>
+          <Text>Direito à Certificação</Text>
+          <Text>{props.data && props.data.direito_certificacao}</Text>
         </Container>
 
         <Container>
-          <Text>
-            Investimento médio por curso
-            {/* {transparencia.dados_gerais.investimento_medio_curso} */}
-          </Text>
+          <Text>Investimento médio por curso</Text>
+          <Text>{props.data && props.data.investimento_medio_curso}</Text>
         </Container>
 
         <Container>
-          <Text>
-            Investimento médio por aluno
-            {/* {transparencia.dados_gerais.investimento_medio_aluno} */}
-          </Text>
+          <Text>Investimento médio por aluno</Text>
+          <Text>{props.data && props.data.investimento_medio_aluno}</Text>
         </Container>
       </Flex>
     </Container>
