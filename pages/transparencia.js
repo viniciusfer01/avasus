@@ -19,12 +19,15 @@ export default function Transparencia() {
   const [dadosGerais, setDadosGerais] = useState({});
   const [usuariosPorCurso, setUsuariosPorCurso] = useState({});
   const [usuariosPorEstado, setUsuariosPorEstado] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     axios.get("http://localhost:3004/transparecia").then((response) => {
       setDadosGerais(response.data.dados_gerais);
       setUsuariosPorCurso(response.data.usuarios_por_curso);
       setUsuariosPorEstado(response.data.usuarios_por_estado);
+      setIsLoading(false);
     });
   }, []);
 
@@ -56,13 +59,15 @@ export default function Transparencia() {
           >
             Transparência
           </Heading>
-          <DadosGerais data={dadosGerais} />
-          <Flex alignContent={"space-between"}>
-            {usuariosPorCurso && (
-              <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
-            )}
-            <UsuariosPorEstado data={usuariosPorEstado} colors={COLORS} />
-          </Flex>
+          {!isLoading && (
+            <>
+              <DadosGerais data={dadosGerais} />
+              <Flex alignContent={"space-between"}>
+                <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
+                <UsuariosPorEstado data={usuariosPorEstado} colors={COLORS} />
+              </Flex>
+            </>
+          )}
         </Container>
       </main>
     </>

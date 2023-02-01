@@ -140,8 +140,6 @@ const usuarios_por_estado = [
   },
 ];
 
-const COLORS = ["#FFFFFF", "#D2202C", "#707070", "#2F2E41"];
-
 const UsuariosPorEstado = (props) => {
   const geoChartData = usuarios_por_estado.map(
     ({ estados, usuarios_totais, direito_certificacao }) => [
@@ -171,7 +169,7 @@ const UsuariosPorEstado = (props) => {
           region: "BR",
           displayMode: "markers",
           colorAxis: {
-            colors: COLORS,
+            colors: props.colors,
           },
           sizeAxis: {
             minSize: 10,
