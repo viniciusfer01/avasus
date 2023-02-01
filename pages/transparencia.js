@@ -64,7 +64,11 @@ export default function Transparencia() {
               <DadosGerais data={dadosGerais} />
               <Flex alignContent={"space-between"}>
                 <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
-                <UsuariosPorEstado data={usuariosPorEstado} colors={COLORS} />
+                <UsuariosPorEstado
+                  data={usuariosPorEstado}
+                  colors={COLORS}
+                  cursos={usuariosPorCurso}
+                />
               </Flex>
             </>
           )}
