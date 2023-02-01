@@ -11,7 +11,7 @@ const data = [
 
 const COLORS = ["#2F2E41", "#FFFFFF", "#707070", "#D2202C"];
 
-const UsuariosPorCurso = () => {
+const UsuariosPorCurso = (props) => {
   return (
     <Container
       textAlign={"center"}
