@@ -25,7 +25,6 @@ export default function Transparencia() {
       setDadosGerais(response.data.dados_gerais);
       setUsuariosPorCurso(response.data.usuarios_por_curso);
       setUsuariosPorEstado(response.data.usuarios_por_estado);
-      console.log(response.data);
     });
   }, []);
 
@@ -41,7 +40,7 @@ export default function Transparencia() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Container maxWidth={"60rem"} textAlign={"left"}>
+        <Container maxWidth={"60rem"} textAlign={"left"} marginBottom={"6rem"}>
           <Breadcrumb padding={"1.5rem 0"}>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Início</BreadcrumbLink>
@@ -59,7 +58,9 @@ export default function Transparencia() {
           </Heading>
           <DadosGerais data={dadosGerais} />
           <Flex alignContent={"space-between"}>
-            <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
+            {usuariosPorCurso && (
+              <UsuariosPorCurso data={usuariosPorCurso} colors={COLORS} />
+            )}
             <UsuariosPorEstado data={usuariosPorEstado} colors={COLORS} />
           </Flex>
         </Container>

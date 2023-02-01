@@ -9,8 +9,6 @@ const data = [
   { name: "Group D", value: 200 },
 ];
 
-const COLORS = ["#2F2E41", "#FFFFFF", "#707070", "#D2202C"];
-
 const UsuariosPorCurso = (props) => {
   return (
     <Container
@@ -37,7 +35,7 @@ const UsuariosPorCurso = (props) => {
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                fill={props.colors[index % props.colors.length]}
               />
             ))}
           </Pie>
